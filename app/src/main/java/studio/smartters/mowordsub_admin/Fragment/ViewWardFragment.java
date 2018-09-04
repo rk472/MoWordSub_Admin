@@ -10,15 +10,15 @@ import android.view.ViewGroup;
 
 import studio.smartters.mowordsub_admin.R;
 
-public class RegisterSurveyFragment extends Fragment {
+public class ViewWardFragment extends Fragment {
     private View root;
     private AppCompatActivity main;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_register_survey, container, false);
+        root = inflater.inflate(R.layout.fragment_view_ward, container, false);
         main = (AppCompatActivity) getActivity();
-        main.getSupportActionBar().setTitle("Register Now");
+        main.getSupportActionBar().setTitle("View Ward/Panchayat");
         return root;
     }
 

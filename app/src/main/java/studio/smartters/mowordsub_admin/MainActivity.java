@@ -1,10 +1,10 @@
 package studio.smartters.mowordsub_admin;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,6 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import studio.smartters.mowordsub_admin.Fragment.RegisterSurveyFragment;
+import studio.smartters.mowordsub_admin.Fragment.ViewBoothFragment;
+import studio.smartters.mowordsub_admin.Fragment.ViewWardFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,9 +32,13 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction f = fm.beginTransaction();
+        f.replace(R.id.container_main,new RegisterSurveyFragment(),"register");
+        f.commit();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_survey);
     }
 
     @Override
@@ -63,14 +71,22 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-
+        Fragment ff = null;
+        String tag = "other";
         if (id == R.id.nav_survey) {
-
+            ff = new RegisterSurveyFragment();
+            tag = "register";
         } else if (id == R.id.nav_panchayat) {
-
+            ff = new ViewWardFragment();
+            tag = "other";
         } else if (id == R.id.nav_booth) {
-
+            ff = new ViewBoothFragment();
+            tag = "other";
         }
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction f = fm.beginTransaction();
+        f.replace(R.id.container_main,ff,tag);
+        f.commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

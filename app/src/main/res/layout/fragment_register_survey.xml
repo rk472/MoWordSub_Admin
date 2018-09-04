@@ -3,6 +3,161 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.RegisterSurveyFragment">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        tools:context=".RegesterSubActivity">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:fillViewport="true"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:id="@+id/reg_container"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/reg_logo"
+                    android:layout_width="80sp"
+                    android:layout_marginTop="30sp"
+                    android:src="@color/colorAccentDark"
+                    android:layout_height="80sp" />
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginLeft="30sp"
+                    android:textColorHint="@color/colorAccentDark"
+                    android:layout_marginRight="30sp"
+                    android:backgroundTint="@color/colorAccentDark"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/reg_userphone"
+                        android:hint="Phone Number"
+                        android:drawablePadding="5sp"
+                        android:drawableStart="@drawable/phone_vect"
+                        android:backgroundTint="@color/colorAccentDark"
+                        android:inputType="phone"
+                        android:layout_height="wrap_content" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    app:passwordToggleEnabled="true"
+                    android:layout_marginLeft="30sp"
+                    android:layout_marginRight="30sp"
+                    android:backgroundTint="@color/colorAccentDark"
+                    app:passwordToggleTint="@color/colorAccentDark"
+                    android:layout_marginTop="10sp"
+                    android:textColorHint="@color/colorAccentDark"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/reg_password"
+                        android:hint="Password"
+                        android:drawablePadding="5sp"
+                        android:drawableStart="@drawable/password_vect"
+                        android:backgroundTint="@color/colorAccentDark"
+                        android:inputType="textPassword"
+                        android:layout_height="wrap_content" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    app:passwordToggleEnabled="true"
+                    android:layout_marginLeft="30sp"
+                    android:layout_marginRight="30sp"
+                    android:textColorHint="@color/colorAccentDark"
+                    android:backgroundTint="@color/colorAccentDark"
+                    app:passwordToggleTint="@color/colorAccentDark"
+                    android:layout_marginTop="10sp"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/reg_name"
+                        android:hint="Name"
+                        android:drawablePadding="5sp"
+                        android:drawableStart="@drawable/profile_vect"
+                        android:backgroundTint="@color/colorAccentDark"
+                        android:inputType="textPersonName"
+                        android:layout_height="wrap_content" />
+                </android.support.design.widget.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:orientation="vertical"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:layout_marginLeft="30sp"
+                    android:layout_marginRight="30sp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25sp"
+                        android:textColor="@color/colorAccentDark"
+                        android:text="Panchayat / Ward"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="2sp"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/panchayat_vect"/>
+                        <Spinner
+                            android:layout_width="match_parent"
+                            android:id="@+id/panchayat_spinner"
+                            android:layout_marginLeft="5sp"
+                            android:layout_centerInParent="true"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15sp"
+                    android:orientation="vertical"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:layout_marginLeft="30sp"
+                    android:layout_marginRight="30sp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25sp"
+                        android:textColor="@color/colorAccentDark"
+                        android:text="Booth Name "/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="2sp"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/home_vect"/>
+                        <Spinner
+                            android:layout_width="match_parent"
+                            android:id="@+id/booth_spinner"
+                            android:layout_marginLeft="5sp"
+                            android:layout_centerInParent="true"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <Button
+                    android:layout_width="200sp"
+                    android:text="Create now"
+                    android:layout_marginTop="20sp"
+                    android:textColor="#ffffff"
+                    android:background="@color/colorAccent"
+                    android:textSize="17sp"
+                    android:layout_marginBottom="30sp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </FrameLayout>

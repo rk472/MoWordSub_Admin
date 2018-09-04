@@ -1,5 +1,6 @@
 package studio.smartters.mowordsub_admin;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void goHome(View view) {
-
+        startActivity(new Intent(this,MainActivity.class));
     }
 }

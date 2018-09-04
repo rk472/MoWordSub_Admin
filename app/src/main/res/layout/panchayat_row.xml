@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="5sp"
+    android:layout_marginLeft="15sp"
+    android:layout_marginRight="15sp"
+    android:layout_marginTop="5sp"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/panchayat_vect"
+            android:layout_marginLeft="5sp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:id="@+id/panchayat_name"
+            android:layout_marginBottom="5sp"
+            android:layout_marginLeft="40sp"
+            android:layout_marginRight="40sp"
+            android:textSize="18sp"
+            android:fontFamily="@font/miriam_libre_new" />
+        <ImageView
+            android:layout_width="30sp"
+            android:id="@+id/edit_panchayat_btn"
+            android:src="@drawable/edit_vect"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_height="30sp"
+            android:layout_marginRight="5sp"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
