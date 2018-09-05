@@ -127,17 +127,19 @@ public class RegisterSurveyFragment extends Fragment {
         protected void onPostExecute(String s) {
             panchayatId=new ArrayList<>();
             panchayatName=new ArrayList<>();
-            try {
-                JSONArray arr=new JSONArray(s);
-                for(int i=0;i<arr.length();i++){
-                    JSONObject json = arr.getJSONObject(i);
-                    panchayatId.add(json.getString("id"));
-                    panchayatName.add(json.getString("name"));
+            if(s!=null) {
+                try {
+                    JSONArray arr = new JSONArray(s);
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject json = arr.getJSONObject(i);
+                        panchayatId.add(json.getString("id"));
+                        panchayatName.add(json.getString("name"));
+                    }
+                    ArrayAdapter<String> aa = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, panchayatName);
+                    panchayatSpinner.setAdapter(aa);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                ArrayAdapter<String> aa=new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,panchayatName);
-                panchayatSpinner.setAdapter(aa);
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
             super.onPostExecute(s);
         }

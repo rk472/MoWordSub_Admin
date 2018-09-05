@@ -32,6 +32,7 @@ public class WardAdapter extends RecyclerView.Adapter<WardHolder> {
     @Override
     public void onBindViewHolder(@NonNull WardHolder holder, int position) {
         holder.setName(names.get(position));
+        holder.edit(ids.get(position),c);
         //Toast.makeText(c, names.get(position), Toast.LENGTH_SHORT).show();
     }
 

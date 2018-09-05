@@ -26,39 +26,39 @@ import studio.smartters.mowordsub_admin.Fragment.ViewBoothFragment;
 import studio.smartters.mowordsub_admin.R;
 import studio.smartters.mowordsub_admin.others.Constants;
 
-public class CreateDialogBooth extends Dialog {
+public class EditDialogBooth extends Dialog {
     private EditText et_name;
     private Button btn_create;
-    private ViewBoothFragment fragment=ViewBoothFragment.getInstance();
     private Context c;
-    public CreateDialogBooth(@NonNull final Context context) {
+    private ViewBoothFragment fragment=ViewBoothFragment.getInstance();
+    public EditDialogBooth(@NonNull Context context, final String id) {
         super(context);
         setContentView(R.layout.modal_create);
         et_name = findViewById(R.id.modal_create);
         btn_create = findViewById(R.id.modal_btn);
         c=context;
+        btn_create.setText("Update");
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name=et_name.getText().toString().trim();
 
                 if(TextUtils.isEmpty(name)) {
-                    Toast.makeText(context, "Name can't be empty..", Toast.LENGTH_SHORT).show();
-                }else{
+                    Toast.makeText(c, "Name can't be empty..", Toast.LENGTH_SHORT).show();
+                }else {
                     fragment.p=new ProgressDialog(c);
                     fragment.p.setTitle("Please wait");
-                    fragment.p.setMessage("please wait while we are adding the ward");
+                    fragment.p.setMessage("please wait while we are updating the booth");
                     fragment.p.setCanceledOnTouchOutside(false);
                     fragment.p.setCancelable(false);
                     fragment.p.show();
-                    AddBoothTask at=new AddBoothTask();
-                    at.execute(Constants.URL+"addBooth?booth="+name+"&ward="+fragment.getWardId());
-
+                    EditBoothTask et=new EditBoothTask();
+                    et.execute(Constants.URL+"editBooth?id="+id+"&name="+name);
                 }
             }
         });
     }
-    private class AddBoothTask extends AsyncTask<String,Void,String> {
+    private class EditBoothTask extends AsyncTask<String,Void,String> {
 
         @Override
         protected String doInBackground(String... strings) {
@@ -87,7 +87,6 @@ public class CreateDialogBooth extends Dialog {
             super.onPostExecute(s);
             fragment.p.dismiss();
             try {
-                Log.e("err",s);
                 JSONObject json=new JSONObject(s);
                 if(json.getBoolean("status")){
                     Toast.makeText(c, "Added Successfully", Toast.LENGTH_SHORT).show();
