@@ -64,7 +64,6 @@ public class ViewBoothFragment extends Fragment {
         list.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         list.setHasFixedSize(true);
         fab = root.findViewById(R.id.add_booth_fab);
-
         return root;
     }
     public static ViewBoothFragment getInstance(){

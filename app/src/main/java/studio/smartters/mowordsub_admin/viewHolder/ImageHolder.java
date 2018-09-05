@@ -1,6 +1,9 @@
 package studio.smartters.mowordsub_admin.viewHolder;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
@@ -58,5 +61,21 @@ public class ImageHolder extends RecyclerView.ViewHolder {
             }
         });
         r.add(i);
+    }
+    public void deleteImage(final String id, final Context c){
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(c)
+                        .setTitle("Exit")
+                        .setMessage("Do You really want to Delete ?")
+                        .setPositiveButton("Yes, Sure", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        }).setNegativeButton("No, Don't",null).show();
+            }
+        });
     }
 }
