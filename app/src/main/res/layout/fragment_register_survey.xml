@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content">
                     <EditText
                         android:layout_width="match_parent"
-                        android:id="@+id/reg_userphone"
+                        android:id="@+id/reg_phone"
                         android:hint="Phone Number"
                         android:drawablePadding="5sp"
                         android:drawableStart="@drawable/phone_vect"
@@ -153,10 +153,12 @@
                     android:text="Create now"
                     android:layout_marginTop="20sp"
                     android:textColor="#ffffff"
+                    android:id="@+id/register_button"
                     android:background="@color/colorAccent"
                     android:textSize="17sp"
                     android:layout_marginBottom="30sp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:enabled="false"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
