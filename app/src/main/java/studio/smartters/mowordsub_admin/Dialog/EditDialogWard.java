@@ -6,7 +6,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,42 +22,43 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import studio.smartters.mowordsub_admin.Fragment.ViewBoothFragment;
+import studio.smartters.mowordsub_admin.Fragment.ViewWardFragment;
 import studio.smartters.mowordsub_admin.R;
 import studio.smartters.mowordsub_admin.others.Constants;
 
-public class CreateDialogBooth extends Dialog {
+public class EditDialogWard extends Dialog {
     private EditText et_name;
     private Button btn_create;
-    private ViewBoothFragment fragment=ViewBoothFragment.getInstance();
     private Context c;
-    public CreateDialogBooth(@NonNull final Context context) {
+    private ViewWardFragment fragment= ViewWardFragment.getInstance();
+    public EditDialogWard(@NonNull Context context, final String id) {
         super(context);
         setContentView(R.layout.modal_create);
         et_name = findViewById(R.id.modal_create);
         btn_create = findViewById(R.id.modal_btn);
         c=context;
+        btn_create.setText("Update");
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name=et_name.getText().toString().trim();
 
                 if(TextUtils.isEmpty(name)) {
-                    Toast.makeText(context, "Name can't be empty..", Toast.LENGTH_SHORT).show();
-                }else{
+                    Toast.makeText(c, "Name can't be empty..", Toast.LENGTH_SHORT).show();
+                }else {
                     fragment.p=new ProgressDialog(c);
                     fragment.p.setTitle("Please wait");
-                    fragment.p.setMessage("please wait while we are adding the ward");
+                    fragment.p.setMessage("please wait while we are updating the ward");
                     fragment.p.setCanceledOnTouchOutside(false);
                     fragment.p.setCancelable(false);
                     fragment.p.show();
-                    AddBoothTask at=new AddBoothTask();
-                    at.execute(Constants.URL+"addBooth?booth="+name+"&ward="+fragment.getWardId());
-
+                    EditWardTask et=new EditWardTask();
+                    et.execute(Constants.URL+"editPanchayat?id="+id+"&name="+name);
                 }
             }
         });
     }
-    private class AddBoothTask extends AsyncTask<String,Void,String> {
+    private class EditWardTask extends AsyncTask<String,Void,String> {
 
         @Override
         protected String doInBackground(String... strings) {
@@ -87,11 +87,10 @@ public class CreateDialogBooth extends Dialog {
             super.onPostExecute(s);
             fragment.p.dismiss();
             try {
-                Log.e("err",s);
                 JSONObject json=new JSONObject(s);
                 if(json.getBoolean("status")){
                     Toast.makeText(c, "Added Successfully", Toast.LENGTH_SHORT).show();
-                    fragment.refreshBooth();
+                    fragment.refresh();
                     dismiss();
                 }else{
                     Toast.makeText(c, "Some error occurred...try again later..", Toast.LENGTH_SHORT).show();

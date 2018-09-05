@@ -64,13 +64,7 @@ public class ViewBoothFragment extends Fragment {
         list.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         list.setHasFixedSize(true);
         fab = root.findViewById(R.id.add_booth_fab);
-        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshWard();
-                refresh.setRefreshing(false);
-            }
-        });
+
         return root;
     }
     public static ViewBoothFragment getInstance(){
@@ -90,6 +84,13 @@ public class ViewBoothFragment extends Fragment {
             public void onClick(View v) {
                 final CreateDialogBooth dialog= new CreateDialogBooth(main);
                 dialog.show();
+            }
+        });
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshWard();
+                refresh.setRefreshing(false);
             }
         });
         refreshWard();

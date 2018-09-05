@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -53,6 +54,19 @@ public class ViewWardFragment extends Fragment {
         main.getSupportActionBar().setTitle("View Ward/Panchayat");
         swipe=root.findViewById(R.id.swipe_ward);
         ln=root.findViewById(R.id.ward_error);
+        list=root.findViewById(R.id.panchayat_list);
+        list.setHasFixedSize(true);
+        list.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+        fab = root.findViewById(R.id.add_panchayat_fab);
+
+
+        refresh();
+        return root;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -60,10 +74,6 @@ public class ViewWardFragment extends Fragment {
                 swipe.setRefreshing(false);
             }
         });
-        list=root.findViewById(R.id.panchayat_list);
-        list.setHasFixedSize(true);
-        list.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        fab = root.findViewById(R.id.add_panchayat_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,10 +81,8 @@ public class ViewWardFragment extends Fragment {
                 dialog.show();
             }
         });
-
-        refresh();
-        return root;
     }
+
     public static ViewWardFragment getInstance(){
         return  inst;
     }

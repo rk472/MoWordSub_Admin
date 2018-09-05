@@ -32,6 +32,7 @@ public class BoothAdapter extends RecyclerView.Adapter<BoothHolder> {
     @Override
     public void onBindViewHolder(@NonNull BoothHolder holder, int position) {
         holder.setName(names.get(position));
+        holder.edit(ids.get(position),c);
     }
 
     @Override
