@@ -16,6 +16,14 @@
             android:id="@+id/nav_booth"
             android:icon="@drawable/ic_menu_camera"
             android:title="View Booth" />
+        <item
+            android:id="@+id/nav_image"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="View Photo" />
+        <item
+            android:id="@+id/nav_video"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="View Video" />
     </group>
 
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".AddImageActivity">
+    <ImageView
+        android:layout_width="300sp"
+        android:layout_height="200sp"
+        android:src="@drawable/noimage"
+        android:id="@+id/view_image_check"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
+        android:layout_marginTop="70sp"
+        android:weightSum="13"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="chooseImage"
+            android:layout_weight="5"
+            android:background="@color/colorAccent"
+            android:textColor="#ffffff"
+            android:text="Choose"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="uploadImage"
+            android:layout_weight="5"
+            android:background="@color/colorAccent"
+            android:textColor="#ffffff"
+            android:text="Upload"/>
+    </LinearLayout>
+</LinearLayout>

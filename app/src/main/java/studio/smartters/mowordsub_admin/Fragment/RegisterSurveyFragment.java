@@ -143,7 +143,6 @@ public class RegisterSurveyFragment extends Fragment {
         }
     }
     private class BoothTask extends AsyncTask<String,Void,String>{
-
         @Override
         protected String doInBackground(String... strings) {
             try {
@@ -165,7 +164,6 @@ public class RegisterSurveyFragment extends Fragment {
             }
             return null;
         }
-
         @Override
         protected void onPostExecute(String s) {
             boothId=new ArrayList<>();

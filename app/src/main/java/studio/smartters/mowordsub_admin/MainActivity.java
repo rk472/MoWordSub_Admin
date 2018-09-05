@@ -13,7 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import studio.smartters.mowordsub_admin.Fragment.ImageFragment;
 import studio.smartters.mowordsub_admin.Fragment.RegisterSurveyFragment;
+import studio.smartters.mowordsub_admin.Fragment.VideoFragment;
 import studio.smartters.mowordsub_admin.Fragment.ViewBoothFragment;
 import studio.smartters.mowordsub_admin.Fragment.ViewWardFragment;
 
@@ -81,6 +83,12 @@ public class MainActivity extends AppCompatActivity
             tag = "other";
         } else if (id == R.id.nav_booth) {
             ff = new ViewBoothFragment();
+            tag = "other";
+        }else if (id == R.id.nav_image) {
+            ff = new ImageFragment();
+            tag = "other";
+        } else if (id == R.id.nav_video) {
+            ff = new VideoFragment();
             tag = "other";
         }
         FragmentManager fm = getSupportFragmentManager();
