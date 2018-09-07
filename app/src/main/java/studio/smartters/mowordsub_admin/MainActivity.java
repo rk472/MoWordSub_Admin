@@ -1,5 +1,6 @@
 package studio.smartters.mowordsub_admin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -65,7 +66,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -78,23 +78,43 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_survey) {
             ff = new RegisterSurveyFragment();
             tag = "register";
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction f = fm.beginTransaction();
+            f.replace(R.id.container_main,ff,tag);
+            f.commit();
         } else if (id == R.id.nav_panchayat) {
             ff = new ViewWardFragment();
             tag = "other";
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction f = fm.beginTransaction();
+            f.replace(R.id.container_main,ff,tag);
+            f.commit();
         } else if (id == R.id.nav_booth) {
             ff = new ViewBoothFragment();
             tag = "other";
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction f = fm.beginTransaction();
+            f.replace(R.id.container_main,ff,tag);
+            f.commit();
         }else if (id == R.id.nav_image) {
             ff = new ImageFragment();
             tag = "other";
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction f = fm.beginTransaction();
+            f.replace(R.id.container_main,ff,tag);
+            f.commit();
         } else if (id == R.id.nav_video) {
             ff = new VideoFragment();
             tag = "other";
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction f = fm.beginTransaction();
+            f.replace(R.id.container_main,ff,tag);
+            f.commit();
+        }else if (id == R.id.nav_search_name) {
+            startActivity(new Intent(this,SearchNameActivity.class));
+        } else if (id == R.id.nav_search_no) {
+            startActivity(new Intent(this,SearchNoActivity.class));
         }
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction f = fm.beginTransaction();
-        f.replace(R.id.container_main,ff,tag);
-        f.commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

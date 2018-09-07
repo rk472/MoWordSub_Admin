@@ -11,13 +11,30 @@
         android:layout_width="300sp"
         android:layout_height="200sp"
         android:id="@+id/view_video_check"/>
-
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30sp"
+        app:counterEnabled="true"
+        app:counterMaxLength="400"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="wrap_content"
+            android:id="@+id/caption_video"
+            android:hint="Enter Caption"
+            android:ems="15"
+            android:backgroundTint="@color/colorAccentDark"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:maxLines="2"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_marginLeft="30sp"
         android:layout_marginRight="30sp"
-        android:layout_marginTop="70sp"
+        android:layout_marginTop="30sp"
         android:weightSum="13"
         android:layout_height="wrap_content">
         <Button
