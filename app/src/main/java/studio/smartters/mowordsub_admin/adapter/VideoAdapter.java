@@ -14,11 +14,12 @@ import studio.smartters.mowordsub_admin.viewHolder.VideoViewHolder;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder> {
     Context c;
-    List<String> desc,path;
-    public VideoAdapter(Context c, List desc, List path) {
+    List<String> desc,path,id;
+    public VideoAdapter(Context c, List<String> desc, List<String> path,List<String> id) {
         this.c=c;
         this.desc=desc;
         this.path=path;
+        this.id=id;
     }
 
     @NonNull
@@ -33,6 +34,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder> {
     public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
         holder.setName(desc.get(position));
         holder.setClick(path.get(position));
+        holder.deleteVideo(id.get(position),c);
     }
 
     @Override

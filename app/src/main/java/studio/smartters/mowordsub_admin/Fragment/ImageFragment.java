@@ -1,9 +1,11 @@
 package studio.smartters.mowordsub_admin.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -32,6 +34,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import studio.smartters.mowordsub_admin.AddImageActivity;
 import studio.smartters.mowordsub_admin.R;
 import studio.smartters.mowordsub_admin.adapter.ImageAdapter;
 import studio.smartters.mowordsub_admin.others.Constants;
@@ -39,12 +42,13 @@ import studio.smartters.mowordsub_admin.others.Constants;
 public class ImageFragment extends Fragment {
     private RequestQueue r;
     private String url= Constants.URL+"getPhotos";
-    private List name,path;
+    private List<String> name,path,id;
     private RecyclerView list;
     private SwipeRefreshLayout swipeRefreshLayout;
     private View v;
     private FloatingActionButton fab;
     private LinearLayout ln;
+    private static ImageFragment inst;
     public ImageFragment() {
     }
     @Override
@@ -55,6 +59,20 @@ public class ImageFragment extends Fragment {
         ln=v.findViewById(R.id.image_error);
         fab=v.findViewById(R.id.add_image);
         swipeRefreshLayout=v.findViewById(R.id.swipe_image);
+        inst=this;
+        Cache c=new DiskBasedCache(getActivity().getCacheDir(),1024*1024);
+        Network n=new BasicNetwork(new HurlStack());
+        r=new RequestQueue(c,n);
+        return v;
+    }
+
+    public static ImageFragment getInstance() {
+        return inst;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -62,16 +80,25 @@ public class ImageFragment extends Fragment {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-        Cache c=new DiskBasedCache(getActivity().getCacheDir(),1024*1024);
-        Network n=new BasicNetwork(new HurlStack());
-        r=new RequestQueue(c,n);
-        refresh();
-        return v;
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), AddImageActivity.class));
+            }
+        });
     }
-    private void refresh(){
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refresh();
+    }
+
+    public void refresh(){
         if(isNetworkAvailable()) {
-            name = new ArrayList();
-            path = new ArrayList();
+            name = new ArrayList<>();
+            path = new ArrayList<>();
+            id   = new ArrayList<>();
             r.start();
             JsonArrayRequest j = new JsonArrayRequest(Request.Method.POST, url, null, new Response.Listener<JSONArray>() {
                 @Override
@@ -82,11 +109,12 @@ public class ImageFragment extends Fragment {
                             JSONObject j = response.getJSONObject(count);
                             name.add(j.getString("name"));
                             path.add(j.getString("url"));
+                            id.add(j.getString("id"));
                             count++;
                         } catch (JSONException e) {
 
                         }
-                        ImageAdapter p = new ImageAdapter(getActivity(), name, path);
+                        ImageAdapter p = new ImageAdapter(getActivity(), name, path,id);
                         list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
                         list.setHasFixedSize(true);
                         list.setAdapter(p);

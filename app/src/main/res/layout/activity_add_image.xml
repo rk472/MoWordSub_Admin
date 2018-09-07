@@ -12,7 +12,13 @@
         android:layout_height="200sp"
         android:src="@drawable/noimage"
         android:id="@+id/view_image_check"/>
-
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Caption"
+        android:id="@+id/image_caption"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
