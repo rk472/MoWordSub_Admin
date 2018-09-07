@@ -17,6 +17,8 @@ import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+
+
 import org.w3c.dom.Text;
 
 import java.io.IOException;
@@ -25,6 +27,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Calendar;
 
 import studio.smartters.mowordsub_admin.Fragment.VideoFragment;
 import studio.smartters.mowordsub_admin.others.Constants;
@@ -92,8 +95,6 @@ public class AddVideoActivity extends AppCompatActivity {
         return path;
     }
     private class UploadVideo extends AsyncTask<Void, Void, String> {
-
-
 
         @Override
         protected void onPreExecute() {
