@@ -12,19 +12,31 @@
         android:layout_height="200sp"
         android:src="@drawable/noimage"
         android:id="@+id/view_image_check"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:hint="Caption"
-        android:id="@+id/image_caption"/>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30sp"
+        app:counterEnabled="true"
+        app:counterMaxLength="400"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="wrap_content"
+            android:id="@+id/image_caption"
+            android:hint="Enter Caption"
+            android:ems="15"
+            android:maxLength="400"
+            android:backgroundTint="@color/colorAccentDark"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:maxLines="2"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_marginLeft="30sp"
         android:layout_marginRight="30sp"
-        android:layout_marginTop="70sp"
+        android:layout_marginTop="20sp"
         android:weightSum="13"
         android:layout_height="wrap_content">
         <Button
