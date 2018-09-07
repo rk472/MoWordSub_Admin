@@ -1,6 +1,7 @@
 package studio.smartters.mowordsub_admin.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import studio.smartters.mowordsub_admin.AddVideoActivity;
 import studio.smartters.mowordsub_admin.R;
 import studio.smartters.mowordsub_admin.adapter.VideoAdapter;
 import studio.smartters.mowordsub_admin.others.Constants;
@@ -45,6 +47,7 @@ public class VideoFragment extends Fragment {
     private View v;
     private FloatingActionButton fab;
     private LinearLayout ln;
+    private static VideoFragment inst;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,6 +55,7 @@ public class VideoFragment extends Fragment {
         list=v.findViewById(R.id.video_list);
         ln=v.findViewById(R.id.video_error);
         fab=v.findViewById(R.id.add_video);
+        inst=this;
         swipeRefreshLayout=v.findViewById(R.id.swipe_video);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -65,9 +69,18 @@ public class VideoFragment extends Fragment {
         r=new RequestQueue(c,n);
         r.start();
         refresh();
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), AddVideoActivity.class));
+            }
+        });
         return v;
     }
-    private void refresh(){
+    public static VideoFragment getInstance(){
+        return inst;
+    }
+    public void refresh(){
         if(isNetworkAvailable()) {
             JsonArrayRequest j = new JsonArrayRequest(Request.Method.POST, url, null, new Response.Listener<JSONArray>() {
                 @Override
