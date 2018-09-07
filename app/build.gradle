@@ -31,4 +31,7 @@ dependencies {
     implementation 'com.airbnb.android:lottie:2.5.0'
     implementation 'com.github.tcking:giraffeplayer2:0.1.19'
     implementation 'com.android.volley:volley:1.1.0'
+    implementation 'id.zelory:compressor:2.1.0'
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.5.+'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 }

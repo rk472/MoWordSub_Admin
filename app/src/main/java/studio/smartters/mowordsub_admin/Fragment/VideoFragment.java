@@ -39,7 +39,7 @@ import studio.smartters.mowordsub_admin.others.Constants;
 public class VideoFragment extends Fragment {
     private RequestQueue r;
     private String url= Constants.URL+"getVideos";
-    private List<String> name,path;
+    private List<String> name,path,id;
     private RecyclerView list;
     private SwipeRefreshLayout swipeRefreshLayout;
     private View v;
@@ -74,18 +74,20 @@ public class VideoFragment extends Fragment {
                 public void onResponse(JSONArray response) {
                     name = new ArrayList<>();
                     path = new ArrayList<>();
+                    id   = new ArrayList<>();
                     int count = 0;
                     while (count < response.length()) {
                         try {
                             JSONObject j = response.getJSONObject(count);
                             name.add(j.getString("desc"));
                             path.add(j.getString("url"));
+                            id.add(j.getString("id"));
                             count++;
                         } catch (JSONException e) {
                             //Toast.makeText(getActivity(),e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
-                    VideoAdapter p = new VideoAdapter(getActivity(), name, path);
+                    VideoAdapter p = new VideoAdapter(getActivity(), name, path,id);
                     list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
                     list.setHasFixedSize(true);
                     list.setAdapter(p);

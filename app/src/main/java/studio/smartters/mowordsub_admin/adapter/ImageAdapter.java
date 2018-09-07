@@ -13,12 +13,13 @@ import studio.smartters.mowordsub_admin.R;
 import studio.smartters.mowordsub_admin.viewHolder.ImageHolder;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageHolder> {
-    Context c;
-    List name,path;
-    public ImageAdapter(Context c, List name,List path) {
+    private Context c;
+    private List<String> name,path,id;
+    public ImageAdapter(Context c, List<String> name,List<String> path,List<String> id) {
             this.c = c;
             this.name=name;
             this.path=path;
+            this.id=id;
     }
     @NonNull
     @Override
@@ -28,8 +29,9 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageHolder> {
     }
     @Override
     public void onBindViewHolder(@NonNull ImageHolder holder, int position) {
-            holder.setName(name.get(position).toString());
-            holder.setImg(path.get(position).toString());
+            holder.setName(name.get(position));
+            holder.setImg(path.get(position));
+            holder.deleteImage(id.get(position),c);
     }
     @Override
     public int getItemCount() {
