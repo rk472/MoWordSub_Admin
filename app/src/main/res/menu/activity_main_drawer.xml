@@ -32,6 +32,18 @@
             android:id="@+id/nav_search_no"
             android:icon="@drawable/ic_menu_camera"
             android:title="Search Number" />
+        <item
+            android:id="@+id/nav_survey_man"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Search By Surveyor" />
+        <item
+            android:id="@+id/nav_no_voter"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="No Voter" />
+        <item
+            android:id="@+id/nav_no_adhar"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="No Adhar" />
     </group>
 
 

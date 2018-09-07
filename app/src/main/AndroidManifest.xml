@@ -3,6 +3,7 @@
     package="studio.smartters.mowordsub_admin">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -36,7 +37,11 @@
         <activity
             android:name=".SearchNameActivity"
             android:theme="@style/NoBar" />
-        <activity android:name=".PersonDataActivity"></activity>
+        <activity
+            android:name=".PersonDataActivity"
+            android:theme="@style/NoBar" />
+        <activity android:name=".NoVoterActivity" />
+        <activity android:name=".NoAdharActivity"></activity>
     </application>
 
 </manifest>

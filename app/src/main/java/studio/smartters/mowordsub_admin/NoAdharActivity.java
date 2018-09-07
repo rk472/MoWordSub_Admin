@@ -29,16 +29,16 @@ import java.util.List;
 import studio.smartters.mowordsub_admin.adapter.DataAdapter;
 import studio.smartters.mowordsub_admin.others.Constants;
 
-public class SearchNoActivity extends AppCompatActivity {
+public class NoAdharActivity extends AppCompatActivity {
     private EditText etSearch;
     private String id;
     private RecyclerView list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_no);
-        etSearch = findViewById(R.id.search_no_text);
-        list=findViewById(R.id.search_no_list);
+        setContentView(R.layout.activity_no_adhar);
+        etSearch = findViewById(R.id.search_name_text);
+        list=findViewById(R.id.search_name_list);
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         id=getSharedPreferences("login",MODE_PRIVATE).getString("id","0");
@@ -58,13 +58,14 @@ public class SearchNoActivity extends AppCompatActivity {
     }
     void refresh(String name){
         GetDataTask gt=new GetDataTask();
-        gt.execute(Constants.URL+"getAllDataBySubAdminByNumber?id="+id+"&phone="+name);
-    }
-    public void clearText(View view) {
-        etSearch.setText("");
+        gt.execute(Constants.URL+"getNoAdharBySubAdmin?id="+id+"&name="+name);
     }
     public void goBack(View view) {
         finish();
+    }
+
+    public void clearText(View view) {
+        etSearch.setText("");
     }
     private class GetDataTask extends AsyncTask<String,Void,String> {
 
@@ -83,9 +84,9 @@ public class SearchNoActivity extends AppCompatActivity {
                 }
                 return res;
             } catch (MalformedURLException e) {
-                //Toast.makeText(SearchNoActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(NoAdharActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
-                //Toast.makeText(SearchNoActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(NoAdharActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
             return "";
         }
@@ -104,11 +105,11 @@ public class SearchNoActivity extends AppCompatActivity {
                     Log.e("arr", arr.getJSONObject(i).toString());
                 }
 
-                DataAdapter d = new DataAdapter(jsonList, SearchNoActivity.this);
+                DataAdapter d = new DataAdapter(jsonList, NoAdharActivity.this);
                 list.setAdapter(d);
 
             } catch(JSONException e){
-                Toast.makeText(SearchNoActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(NoAdharActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
         }

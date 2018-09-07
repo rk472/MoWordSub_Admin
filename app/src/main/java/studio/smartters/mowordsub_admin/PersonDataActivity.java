@@ -1,7 +1,9 @@
 package studio.smartters.mowordsub_admin;
 
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 import org.json.JSONException;
@@ -9,10 +11,12 @@ import org.json.JSONObject;
 
 public class PersonDataActivity extends AppCompatActivity {
     private EditText etName,etHead,etAddress,etRelation,etContact,etGen,etBlood,etDom,etDob,etMarriage,etAdhar,etVoter;
+    private TextInputLayout tlDom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_data);
+        tlDom = findViewById(R.id.tlDom);
         etName = findViewById(R.id.person_name);
         etHead = findViewById(R.id.person_head_name);
         etAddress = findViewById(R.id.person_address);
@@ -25,9 +29,20 @@ public class PersonDataActivity extends AppCompatActivity {
         etMarriage = findViewById(R.id.person_marital_status);
         etAdhar = findViewById(R.id.person_adhar);
         etVoter = findViewById(R.id.person_voter);
+        String jsonData = getIntent().getExtras().getString("json_data");
+        try {
+            setData(new JSONObject(jsonData));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
     public void setData(JSONObject s){
         try {
+            if (s.getString("pmarriage").equalsIgnoreCase("Married")) {
+                tlDom.setVisibility(View.VISIBLE);
+            } else {
+                tlDom.setVisibility(View.INVISIBLE);
+            }
             etName.setText(s.getString("pname"));
             etHead.setText(s.getString("phead"));
             etAddress.setText(s.getString("paddress"));
@@ -44,5 +59,9 @@ public class PersonDataActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void goBack(View view) {
+        finish();
     }
 }

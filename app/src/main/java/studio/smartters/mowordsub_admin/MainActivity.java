@@ -115,6 +115,14 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_search_no) {
             startActivity(new Intent(this,SearchNoActivity.class));
         }
+        else if (id == R.id.nav_survey_man) {
+            //startActivity(new Intent(this,SearchNameActivity.class));
+        } else if (id == R.id.nav_no_voter) {
+            startActivity(new Intent(this,NoVoterActivity.class));
+        }else if (id == R.id.nav_no_adhar) {
+            startActivity(new Intent(this,NoAdharActivity.class));
+        }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
