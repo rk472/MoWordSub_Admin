@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import studio.smartters.mowordsub_admin.Fragment.VideoFragment;
 import studio.smartters.mowordsub_admin.R;
 import studio.smartters.mowordsub_admin.others.Constants;
 import tcking.github.com.giraffeplayer2.GiraffePlayer;
@@ -89,7 +90,7 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
             super.onPostExecute(s);
             Toast.makeText(v.getContext(), s, Toast.LENGTH_SHORT).show();
             if(s.equals("Successfully removed")){
-                //VideoFragment.getInstance().refresh();
+                VideoFragment.getInstance().refresh();
             }
         }
     }
