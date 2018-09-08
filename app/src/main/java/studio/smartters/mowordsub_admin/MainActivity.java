@@ -1,6 +1,7 @@
 package studio.smartters.mowordsub_admin;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -22,7 +23,7 @@ import studio.smartters.mowordsub_admin.Fragment.ViewWardFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private static MainActivity inst;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_survey);
     }
-
+    public static MainActivity getInstance(){
+        return inst;
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -63,7 +66,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            SharedPreferences s=getSharedPreferences("login",MODE_PRIVATE);
+            SharedPreferences.Editor e=s.edit();
+            e.putBoolean("login",false);
+            e.apply();
+            finishAffinity();
+            startActivity(new Intent(this,LoginActivity.class));
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -116,11 +126,13 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(this,SearchNoActivity.class));
         }
         else if (id == R.id.nav_survey_man) {
-            //startActivity(new Intent(this,SearchNameActivity.class));
+            startActivity(new Intent(this,ViewSurveyManActivity.class));
         } else if (id == R.id.nav_no_voter) {
             startActivity(new Intent(this,NoVoterActivity.class));
         }else if (id == R.id.nav_no_adhar) {
             startActivity(new Intent(this,NoAdharActivity.class));
+        }else if (id == R.id.nav_help) {
+            startActivity(new Intent(this,HelpViewActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
