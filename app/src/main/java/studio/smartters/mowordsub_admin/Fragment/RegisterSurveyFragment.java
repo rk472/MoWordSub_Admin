@@ -59,7 +59,6 @@ public class RegisterSurveyFragment extends Fragment {
         registerButton=root.findViewById(R.id.register_button);
         return root;
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
