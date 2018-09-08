@@ -6,8 +6,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -52,6 +54,10 @@ public class VideoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_video, container, false);
+        AppCompatActivity main = (AppCompatActivity) getActivity();
+        main.getSupportActionBar().setTitle("View Videos");
+        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_video);
         list=v.findViewById(R.id.video_list);
         ln=v.findViewById(R.id.video_error);
         fab=v.findViewById(R.id.add_video);

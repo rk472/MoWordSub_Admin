@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -48,6 +49,8 @@ public class RegisterSurveyFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_register_survey, container, false);
         main = (AppCompatActivity) getActivity();
         main.getSupportActionBar().setTitle("Register Now");
+        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_survey);
         nameText=root.findViewById(R.id.reg_name);
         phoneText=root.findViewById(R.id.reg_phone);
         passText=root.findViewById(R.id.reg_password);

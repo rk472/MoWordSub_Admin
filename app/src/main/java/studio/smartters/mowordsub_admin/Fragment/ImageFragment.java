@@ -7,8 +7,10 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -55,6 +57,10 @@ public class ImageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_image, container, false);
+        AppCompatActivity main = (AppCompatActivity) getActivity();
+        main.getSupportActionBar().setTitle("View Image");
+        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_image);
         list=v.findViewById(R.id.image_list);
         ln=v.findViewById(R.id.image_error);
         fab=v.findViewById(R.id.add_image);

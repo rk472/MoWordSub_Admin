@@ -14,16 +14,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import studio.smartters.mowordsub_admin.Fragment.HomeFragment;
 import studio.smartters.mowordsub_admin.Fragment.ImageFragment;
 import studio.smartters.mowordsub_admin.Fragment.RegisterSurveyFragment;
 import studio.smartters.mowordsub_admin.Fragment.VideoFragment;
 import studio.smartters.mowordsub_admin.Fragment.ViewBoothFragment;
 import studio.smartters.mowordsub_admin.Fragment.ViewWardFragment;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static MainActivity inst;
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +40,11 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction f = fm.beginTransaction();
-        f.replace(R.id.container_main,new RegisterSurveyFragment(),"register");
+        f.replace(R.id.container_main,new HomeFragment(),"home");
         f.commit();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.nav_survey);
+        navigationView.setCheckedItem(R.id.nav_home);
     }
     public static MainActivity getInstance(){
         return inst;
@@ -85,9 +87,16 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         Fragment ff = null;
         String tag = "other";
-        if (id == R.id.nav_survey) {
+        if (id == R.id.nav_home) {
+            ff = new HomeFragment();
+            tag = "home";
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction f = fm.beginTransaction();
+            f.replace(R.id.container_main,ff,tag);
+            f.commit();
+        }else if (id == R.id.nav_survey) {
             ff = new RegisterSurveyFragment();
-            tag = "register";
+            tag = "other";
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction f = fm.beginTransaction();
             f.replace(R.id.container_main,ff,tag);
@@ -139,4 +148,56 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    public void goImage(View v){
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction f = fm.beginTransaction();
+        f.replace(R.id.container_main,new ImageFragment(),"other");
+        f.commit();
+    }
+    public void goVideo(View v){
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction f = fm.beginTransaction();
+        f.replace(R.id.container_main,new VideoFragment(),"other");
+        f.commit();
+    }
+    public void goBooth(View v){
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction f = fm.beginTransaction();
+        f.replace(R.id.container_main,new ViewBoothFragment(),"other");
+        f.commit();
+    }
+    public void goWard(View v){
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction f = fm.beginTransaction();
+        f.replace(R.id.container_main,new ViewWardFragment(),"other");
+        f.commit();
+    }
+    public void goReg(View v){
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction f = fm.beginTransaction();
+        f.replace(R.id.container_main,new RegisterSurveyFragment(),"other");
+        f.commit();
+    }
+    public void goHelp(View v){
+        startActivity(new Intent(this,HelpViewActivity.class));
+    }
+    public void goNameSr(View v){
+        startActivity(new Intent(this,SearchNameActivity.class));
+    }
+    public void goNoSr(View v){
+        startActivity(new Intent(this,SearchNoActivity.class));
+    }
+    public void goSurveyor(View v){
+        startActivity(new Intent(this,ViewSurveyManActivity.class));
+    }
+    public void goNoAdhar(View v){
+        startActivity(new Intent(this,NoAdharActivity.class));
+    }
+    public void goNoVoter(View v){
+        startActivity(new Intent(this,NoVoterActivity.class));
+    }
+    public void goLabharthi(View v){
+        //startActivity(new Intent(this,NoAdharActivity.class));
+    }
+
 }

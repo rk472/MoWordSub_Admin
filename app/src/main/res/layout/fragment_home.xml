@@ -22,6 +22,7 @@
                     android:layout_width="match_parent"
                     android:layout_margin="5sp"
                     android:id="@+id/image_card"
+                    android:onClick="goImage"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:layout_height="match_parent">
@@ -61,6 +62,7 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_margin="5sp"
+                    android:onClick="goVideo"
                     android:id="@+id/video_card"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -97,6 +99,7 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_margin="5sp"
+                    android:onClick="goHelp"
                     android:id="@+id/help_card"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -139,6 +142,7 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_margin="5sp"
+                    android:onClick="goReg"
                     android:id="@+id/register_card"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -176,6 +180,7 @@
                     android:layout_width="match_parent"
                     android:layout_margin="5sp"
                     android:id="@+id/ward_card"
+                    android:onClick="goWard"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:layout_height="match_parent">
@@ -212,6 +217,7 @@
                     android:layout_width="match_parent"
                     android:layout_margin="5sp"
                     android:id="@+id/booth_card"
+                    android:onClick="goBooth"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:layout_height="match_parent">
@@ -254,6 +260,7 @@
                     android:layout_width="match_parent"
                     android:layout_margin="5sp"
                     android:id="@+id/name_search_card"
+                    android:onClick="goNameSr"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:layout_height="match_parent">
@@ -290,6 +297,7 @@
                     android:layout_width="match_parent"
                     android:layout_margin="5sp"
                     android:id="@+id/no_search_card"
+                    android:onClick="goNoSr"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:layout_height="match_parent">
@@ -326,6 +334,7 @@
                     android:layout_width="match_parent"
                     android:layout_margin="5sp"
                     android:id="@+id/survey_man_card"
+                    android:onClick="goSurveyor"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:layout_height="match_parent">
@@ -368,6 +377,7 @@
                     android:layout_width="match_parent"
                     android:layout_margin="5sp"
                     android:id="@+id/no_adhar_card"
+                    android:onClick="goNoAdhar"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:layout_height="match_parent">
@@ -403,6 +413,7 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_margin="5sp"
+                    android:onClick="goNoVoter"
                     android:id="@+id/no_voter_card"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -439,6 +450,7 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_margin="5sp"
+                    android:onClick="goLabharthi"
                     android:id="@+id/labharthi_card"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"

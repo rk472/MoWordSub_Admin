@@ -5,48 +5,57 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/draw_booth_black"
+            android:title="Home" />
+        <item
             android:id="@+id/nav_image"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/draw_image_black"
             android:title="View Photo" />
         <item
             android:id="@+id/nav_video"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/draw_video_black"
             android:title="View Video" />
         <item
+            android:title="Help Request"
+            android:icon="@drawable/draw_help_black"
+            android:id="@+id/nav_help"/>
+        <item
             android:id="@+id/nav_survey"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Create Surveyer" />
+            android:icon="@drawable/draw_register_black"
+            android:title="Create Surveyor" />
         <item
             android:id="@+id/nav_panchayat"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/draw_ward_black"
             android:title="View Ward/Panchayat" />
         <item
             android:id="@+id/nav_booth"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/draw_booth_black"
             android:title="View Booth" />
         <item
             android:id="@+id/nav_search_name"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Search Name" />
+            android:icon="@drawable/draw_namesearch_black"
+            android:title="Search By Name" />
         <item
             android:id="@+id/nav_search_no"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Search Number" />
+            android:icon="@drawable/draw_nosearch_black"
+            android:title="Search By Phone" />
         <item
             android:id="@+id/nav_survey_man"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/draw_surveysearch_black"
             android:title="Search By Surveyor" />
         <item
-            android:id="@+id/nav_no_voter"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="No Voter" />
-        <item
             android:id="@+id/nav_no_adhar"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="No Adhar" />
-        <item android:icon="@drawable/ic_menu_camera"
-            android:title="Help List"
-            android:id="@+id/nav_help"/>
+            android:icon="@drawable/draw_nocard_black"
+            android:title="No Adhar List" />
+        <item
+            android:id="@+id/nav_no_voter"
+            android:icon="@drawable/draw_nocard_black"
+            android:title="No Voter List" />
+        <item
+            android:id="@+id/nav_labharthi"
+            android:icon="@drawable/draw_labharthi_black"
+            android:title="Labharthi List" />
     </group>
 
 
