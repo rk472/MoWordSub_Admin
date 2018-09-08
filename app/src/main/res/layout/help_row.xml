@@ -64,8 +64,6 @@
             android:layout_centerHorizontal="true"
             android:layout_height="45sp"
             android:id="@+id/search_call"/>
-
-
         </RelativeLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

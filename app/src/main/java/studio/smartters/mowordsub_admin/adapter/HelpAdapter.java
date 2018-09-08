@@ -28,7 +28,7 @@ public class HelpAdapter extends RecyclerView.Adapter<HelpViewHolder>{
     @NonNull
     @Override
     public HelpViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(a).inflate(R.layout.search_row,parent,false);
+        View v= LayoutInflater.from(a).inflate(R.layout.help_row,parent,false);
         return new HelpViewHolder(v);
     }
 
