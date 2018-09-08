@@ -10,4 +10,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="scheme">
+        <item>Atal Pension Yojna</item>
+        <item>Ujjwala Yojna</item>
+        <item>Sukanya Yojna</item>
+        <item>Surakhya Yojna</item>
+        <item>Others</item>
+    </string-array>
 </resources>

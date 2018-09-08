@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 import studio.smartters.mowordsub_admin.Dialog.EditDialogBooth;
 import studio.smartters.mowordsub_admin.MainActivity;
 import studio.smartters.mowordsub_admin.R;
@@ -42,6 +44,7 @@ public class BoothHolder extends RecyclerView.ViewHolder {
                 Intent i=new Intent(c, SearchByBoothActivity.class);
                 i.putExtra("id",id);
                 c.startActivity(i);
+                
             }
         });
 
