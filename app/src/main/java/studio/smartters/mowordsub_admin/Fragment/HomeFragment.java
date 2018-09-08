@@ -21,9 +21,13 @@ public class HomeFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_home, container, false);
         main = (AppCompatActivity)getActivity();
         main.getSupportActionBar().setTitle("Home");
-        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
-        navigationView.setCheckedItem(R.id.nav_home);
         return v;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_home);
+    }
 }

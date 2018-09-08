@@ -49,8 +49,6 @@ public class RegisterSurveyFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_register_survey, container, false);
         main = (AppCompatActivity) getActivity();
         main.getSupportActionBar().setTitle("Register Now");
-        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
-        navigationView.setCheckedItem(R.id.nav_survey);
         nameText=root.findViewById(R.id.reg_name);
         phoneText=root.findViewById(R.id.reg_phone);
         passText=root.findViewById(R.id.reg_password);
@@ -59,6 +57,13 @@ public class RegisterSurveyFragment extends Fragment {
         registerButton=root.findViewById(R.id.register_button);
         return root;
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_survey);
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

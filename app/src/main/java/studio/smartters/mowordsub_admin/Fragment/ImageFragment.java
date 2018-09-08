@@ -51,16 +51,15 @@ public class ImageFragment extends Fragment {
     private FloatingActionButton fab;
     private LinearLayout ln;
     private static ImageFragment inst;
+    private AppCompatActivity main;
     public ImageFragment() {
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_image, container, false);
-        AppCompatActivity main = (AppCompatActivity) getActivity();
+        main = (AppCompatActivity) getActivity();
         main.getSupportActionBar().setTitle("View Image");
-        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
-        navigationView.setCheckedItem(R.id.nav_image);
         list=v.findViewById(R.id.image_list);
         ln=v.findViewById(R.id.image_error);
         fab=v.findViewById(R.id.add_image);
@@ -97,6 +96,8 @@ public class ImageFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_image);
         refresh();
     }
 
