@@ -47,7 +47,8 @@
         <activity android:name=".ViewSurveyManActivity" />
         <activity android:name=".HelpViewActivity" />
         <activity android:name=".HelpDetailsActivity" />
-        <activity android:name=".SearchByBoothActivity"></activity>
+        <activity android:name=".SearchByBoothActivity" />
+        <activity android:name=".LabharthiListActivity"></activity>
     </application>
 
 </manifest>
