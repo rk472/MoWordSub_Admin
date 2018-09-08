@@ -25,7 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewDataActivity"/>
+        <activity android:name=".ViewDataActivity" />
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".MainActivity"
@@ -44,7 +44,9 @@
             android:theme="@style/NoBar" />
         <activity android:name=".NoVoterActivity" />
         <activity android:name=".NoAdharActivity" />
-        <activity android:name=".ViewSurveyManActivity"></activity>
+        <activity android:name=".ViewSurveyManActivity" />
+        <activity android:name=".HelpViewActivity" />
+        <activity android:name=".HelpDetailsActivity"></activity>
     </application>
 
 </manifest>

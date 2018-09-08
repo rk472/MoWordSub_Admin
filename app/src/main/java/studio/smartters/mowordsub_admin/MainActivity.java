@@ -129,6 +129,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(this,NoVoterActivity.class));
         }else if (id == R.id.nav_no_adhar) {
             startActivity(new Intent(this,NoAdharActivity.class));
+        }else if (id == R.id.nav_help) {
+            startActivity(new Intent(this,HelpViewActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
