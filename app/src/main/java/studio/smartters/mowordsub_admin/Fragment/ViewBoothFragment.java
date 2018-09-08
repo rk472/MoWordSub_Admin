@@ -57,8 +57,6 @@ public class ViewBoothFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_view_booth, container, false);
         main = (AppCompatActivity) getActivity();
         main.getSupportActionBar().setTitle("View Booth");
-        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
-        navigationView.setCheckedItem(R.id.nav_booth);
         panchayatSpinner=root.findViewById(R.id.select_panchayat);
         refresh=root.findViewById(R.id.swipe_booth);
         ln=root.findViewById(R.id.booth_error);
@@ -77,6 +75,12 @@ public class ViewBoothFragment extends Fragment {
     }
     public String getWardId(){
         return panchayatId.get(panchayatSpinner.getSelectedItemPosition());
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_booth);
     }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

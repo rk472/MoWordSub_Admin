@@ -142,6 +142,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(this,NoAdharActivity.class));
         }else if (id == R.id.nav_help) {
             startActivity(new Intent(this,HelpViewActivity.class));
+        }else if (id == R.id.nav_labharthi) {
+            startActivity(new Intent(this,LabharthiListActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -197,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(new Intent(this,NoVoterActivity.class));
     }
     public void goLabharthi(View v){
-        //startActivity(new Intent(this,NoAdharActivity.class));
+        startActivity(new Intent(this,LabharthiListActivity.class));
     }
 
 }

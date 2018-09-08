@@ -53,8 +53,6 @@ public class ViewWardFragment extends Fragment {
         inst=this;
         main = (AppCompatActivity) getActivity();
         main.getSupportActionBar().setTitle("View Ward/Panchayat");
-        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
-        navigationView.setCheckedItem(R.id.nav_panchayat);
         swipe=root.findViewById(R.id.swipe_ward);
         ln=root.findViewById(R.id.ward_error);
         list=root.findViewById(R.id.panchayat_list);
@@ -102,6 +100,14 @@ public class ViewWardFragment extends Fragment {
             ln.setVisibility(View.VISIBLE);
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_panchayat);
+    }
+
     private class GetWordTask extends AsyncTask<String,Void,String>{
 
         @Override
@@ -125,7 +131,6 @@ public class ViewWardFragment extends Fragment {
             }
             return null;
         }
-
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);

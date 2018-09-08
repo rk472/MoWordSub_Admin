@@ -72,31 +72,31 @@ public class LabharthiListActivity extends AppCompatActivity {
                 if(s.equals("Atal Pension Yojna")) {
                     atal = "1";
                     sukanya = "0";
-                    sukanya = "0";
+                    surakhya = "0";
                     ujwala = "0";
                     other = "0";
                 }else if(s.equals("Ujjwala Yojna")) {
                     atal = "0";
                     sukanya = "0";
-                    sukanya = "0";
+                    surakhya = "0";
                     ujwala = "1";
                     other = "0";
                 }else if(s.equals("Sukanya Yojna")){
                     atal = "0";
                     sukanya = "1";
-                    sukanya = "0";
+                    surakhya = "0";
                     ujwala = "0";
                     other = "0";
                 }else if(s.equals("Surakhya Yojna")){
                     atal = "0";
                     sukanya = "0";
-                    sukanya = "1";
+                    surakhya = "1";
                     ujwala = "0";
                     other = "0";
                 }else if(s.equals("Others")){
                     atal = "0";
                     sukanya = "0";
-                    sukanya = "0";
+                    surakhya = "0";
                     ujwala = "0";
                     other = "1";
                 }
