@@ -5,6 +5,14 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_image"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="View Photo" />
+        <item
+            android:id="@+id/nav_video"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="View Video" />
+        <item
             android:id="@+id/nav_survey"
             android:icon="@drawable/ic_menu_camera"
             android:title="Create Surveyer" />
@@ -16,14 +24,6 @@
             android:id="@+id/nav_booth"
             android:icon="@drawable/ic_menu_camera"
             android:title="View Booth" />
-        <item
-            android:id="@+id/nav_image"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="View Photo" />
-        <item
-            android:id="@+id/nav_video"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="View Video" />
         <item
             android:id="@+id/nav_search_name"
             android:icon="@drawable/ic_menu_camera"
