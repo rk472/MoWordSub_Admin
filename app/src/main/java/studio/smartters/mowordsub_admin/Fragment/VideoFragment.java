@@ -50,14 +50,13 @@ public class VideoFragment extends Fragment {
     private FloatingActionButton fab;
     private LinearLayout ln;
     private static VideoFragment inst;
+    private AppCompatActivity main;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_video, container, false);
-        AppCompatActivity main = (AppCompatActivity) getActivity();
+        main= (AppCompatActivity) getActivity();
         main.getSupportActionBar().setTitle("View Videos");
-        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
-        navigationView.setCheckedItem(R.id.nav_video);
         list=v.findViewById(R.id.video_list);
         ln=v.findViewById(R.id.video_error);
         fab=v.findViewById(R.id.add_video);
@@ -83,6 +82,14 @@ public class VideoFragment extends Fragment {
         });
         return v;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        NavigationView navigationView = (NavigationView) main.findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_video);
+    }
+
     public static VideoFragment getInstance(){
         return inst;
     }

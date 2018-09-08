@@ -1,5 +1,6 @@
 package studio.smartters.mowordsub_admin;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -55,8 +57,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if(getSupportFragmentManager().findFragmentById(R.id.container_main).getTag().equals("home")){
+                new AlertDialog.Builder(this).setCancelable(true)
+                        .setMessage("Do You Really want to exit ?")
+                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                MainActivity.super.onBackPressed();
+                            }
+                        }).setNegativeButton("no",null).show();
+            }else{
+                Fragment ff = new HomeFragment();
+                String tag = "home";
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentTransaction f = fm.beginTransaction();
+                f.replace(R.id.container_main,ff,tag);
+                f.commit();
+            }
+
         }
+
     }
 
     @Override
