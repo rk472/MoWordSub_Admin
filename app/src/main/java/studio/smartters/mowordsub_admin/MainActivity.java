@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 f.replace(R.id.container_main,ff,tag);
                 f.commit();
             }
-
         }
 
     }
