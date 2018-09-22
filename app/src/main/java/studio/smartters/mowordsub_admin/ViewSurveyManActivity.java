@@ -1,5 +1,6 @@
 package studio.smartters.mowordsub_admin;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -30,17 +31,23 @@ import studio.smartters.mowordsub_admin.others.SurveyMan;
 public class ViewSurveyManActivity extends AppCompatActivity {
     private RecyclerView list;
     private String id;
+    private static ViewSurveyManActivity inst;
+    public ProgressDialog p;
+    public static ViewSurveyManActivity getInstance(){
+        return inst;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_survey_man);
         list=findViewById(R.id.survey_man_list);
+        inst=this;
         id=getSharedPreferences("login",MODE_PRIVATE).getString("id","0");
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         refresh("");
     }
-    void refresh(String name){
+    public void refresh(String name){
         GetDataTask gt=new GetDataTask();
         gt.execute(Constants.URL+"getAllSurveyMan?id="+id+"&name="+name);
     }
@@ -60,12 +67,10 @@ public class ViewSurveyManActivity extends AppCompatActivity {
                     data=ir.read();
                 }
                 return res;
-            } catch (MalformedURLException e) {
-                //Toast.makeText(SearchNameActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
-                //Toast.makeText(SearchNameActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                return "can't reach server";
             }
-            return "";
+
         }
 
         @Override
@@ -87,7 +92,7 @@ public class ViewSurveyManActivity extends AppCompatActivity {
                 list.setAdapter(d);
 
             } catch(JSONException e){
-                Toast.makeText(ViewSurveyManActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewSurveyManActivity.this, s, Toast.LENGTH_SHORT).show();
             }
 
         }

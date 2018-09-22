@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -23,25 +24,29 @@ import java.net.URLConnection;
 
 import studio.smartters.mowordsub_admin.Fragment.ViewBoothFragment;
 import studio.smartters.mowordsub_admin.R;
+import studio.smartters.mowordsub_admin.ViewSurveyManActivity;
 import studio.smartters.mowordsub_admin.others.Constants;
 
 public class EditPasswordBooth extends Dialog {
     private EditText et_pass,et_own_pass;
     private Button btn_create;
-    private Context c;
-    private ViewBoothFragment fragment=ViewBoothFragment.getInstance();
-    public EditPasswordBooth(@NonNull Context context, final String id) {
+    private AppCompatActivity c;
+    private String id;
+    private ProgressDialog p;
+    private ViewSurveyManActivity fragment=ViewSurveyManActivity.getInstance();
+    public EditPasswordBooth(@NonNull AppCompatActivity context, final String id) {
         super(context);
         setContentView(R.layout.modal_password);
         et_pass = findViewById(R.id.modal_password);
         et_own_pass = findViewById(R.id.modal_own_password);
         btn_create = findViewById(R.id.modal_btn);
         c=context;
+        this.id=id;
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String password=et_pass.getText().toString().trim();
-                String ownpassword=et_pass.getText().toString().trim();
+                String ownpassword=et_own_pass.getText().toString().trim();
                 if(TextUtils.isEmpty(password)||TextUtils.isEmpty(ownpassword)) {
                     Toast.makeText(c, "Passwords can't be empty..", Toast.LENGTH_SHORT).show();
                 }else {
@@ -52,7 +57,8 @@ public class EditPasswordBooth extends Dialog {
                     fragment.p.setCancelable(false);
                     fragment.p.show();
                     EditBoothTask et=new EditBoothTask();
-                    
+                    String myId=c.getSharedPreferences("login",Context.MODE_PRIVATE).getString("id","0");
+                    et.execute(Constants.URL+"changeSurveyPassword?myId="+myId+"&id="+id+"&myPass="+ownpassword+"&pass="+password);
                 }
             }
         });
@@ -73,12 +79,9 @@ public class EditPasswordBooth extends Dialog {
                     data=ir.read();
                 }
                 return res;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
             } catch (IOException e) {
-                e.printStackTrace();
+                return "Can't reach Server ";
             }
-            return null;
         }
 
         @Override
@@ -87,15 +90,15 @@ public class EditPasswordBooth extends Dialog {
             fragment.p.dismiss();
             try {
                 JSONObject json=new JSONObject(s);
-                if(json.getBoolean("status")){
+                if(json.getBoolean("status")) {
                     Toast.makeText(c, "Updated Successfully", Toast.LENGTH_SHORT).show();
-                    fragment.refreshBooth();
+                    fragment.refresh("");
                     dismiss();
                 }else{
-                    Toast.makeText(c, "Some error occurred...try again later..", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(c, "Either your password is wrong or You are giving the old password of the user", Toast.LENGTH_SHORT).show();
                 }
-            } catch (JSONException e) {
-                e.printStackTrace();
+            }catch (JSONException e) {
+                Toast.makeText(c, s, Toast.LENGTH_SHORT).show();
             }
         }
     }

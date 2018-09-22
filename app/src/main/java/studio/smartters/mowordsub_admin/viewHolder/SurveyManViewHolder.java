@@ -11,13 +11,14 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import studio.smartters.mowordsub_admin.Dialog.EditPasswordBooth;
 import studio.smartters.mowordsub_admin.PersonDataActivity;
 import studio.smartters.mowordsub_admin.R;
 import studio.smartters.mowordsub_admin.ViewDataActivity;
 
 public class SurveyManViewHolder extends RecyclerView.ViewHolder {
     private TextView nameText, areaText,totalText;
-    private ImageButton callButton;
+    private ImageButton callButton,editButton;
     private View v;
     public SurveyManViewHolder(View itemView) {
         super(itemView);
@@ -26,6 +27,7 @@ public class SurveyManViewHolder extends RecyclerView.ViewHolder {
         areaText = v.findViewById(R.id.survey_man_area);
         callButton = v.findViewById(R.id.survey_man_call);
         totalText=v.findViewById(R.id.survey_man_no);
+        editButton=v.findViewById(R.id.survey_man_edit);
     }
     public void setName(String name) {
         nameText.setText(name);
@@ -58,6 +60,15 @@ public class SurveyManViewHolder extends RecyclerView.ViewHolder {
                 Intent i=new Intent(a,ViewDataActivity.class);
                 i.putExtra("id",id);
                 a.startActivity(i);
+            }
+        });
+
+    }
+    public void setEdit(final String id, final AppCompatActivity a){
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new EditPasswordBooth(a,id).show();
             }
         });
 

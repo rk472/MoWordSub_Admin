@@ -35,6 +35,7 @@ public class SurveyManAdapter extends  RecyclerView.Adapter<SurveyManViewHolder>
         holder.setArea(list.get(position).getWard()+","+list.get(position).getBooth());
         holder.setNo(list.get(position).getTotal());
         holder.setClick(list.get(position).getId(),a);
+        holder.setEdit(list.get(position).getId(),a);
     }
 
     @Override

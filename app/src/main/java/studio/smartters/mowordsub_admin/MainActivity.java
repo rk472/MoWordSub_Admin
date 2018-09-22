@@ -95,7 +95,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             finishAffinity();
             startActivity(new Intent(this,LoginActivity.class));
             finish();
-            return true;
+        }else{
+            startActivity(new Intent(this,AddDocumentActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

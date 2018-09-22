@@ -48,7 +48,8 @@
         <activity android:name=".HelpViewActivity" />
         <activity android:name=".HelpDetailsActivity" />
         <activity android:name=".SearchByBoothActivity" />
-        <activity android:name=".LabharthiListActivity"></activity>
+        <activity android:name=".LabharthiListActivity"/>
+        <activity android:name=".AddDocumentActivity"/>
     </application>
 
 </manifest>
