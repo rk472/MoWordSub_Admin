@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:textSize="19sp"
         android:textStyle="bold"
+        android:textColor="#ffffff"
         android:layout_marginTop="5sp"
         android:text="Mo Ward Sub Admin" />
 </LinearLayout>
