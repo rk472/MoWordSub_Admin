@@ -18,21 +18,26 @@
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity"
+            android:theme="@style/LaunchScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewDataActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".ViewDataActivity"
+            android:label="People List"/>
+        <activity android:name=".LoginActivity"
+            android:theme="@style/NoBar"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AddImageActivity" />
-        <activity android:name=".AddVideoActivity" />
+        <activity android:name=".AddImageActivity"
+            android:label="Add Image"/>
+        <activity android:name=".AddVideoActivity"
+            android:label="Add Video"/>
         <activity
             android:name=".SearchNoActivity"
             android:theme="@style/NoBar" />
@@ -42,14 +47,28 @@
         <activity
             android:name=".PersonDataActivity"
             android:theme="@style/NoBar" />
-        <activity android:name=".NoVoterActivity" />
-        <activity android:name=".NoAdharActivity" />
-        <activity android:name=".ViewSurveyManActivity" />
-        <activity android:name=".HelpViewActivity" />
-        <activity android:name=".HelpDetailsActivity" />
-        <activity android:name=".SearchByBoothActivity" />
-        <activity android:name=".LabharthiListActivity"/>
-        <activity android:name=".AddDocumentActivity"/>
+        <activity android:name=".NoVoterActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="No Voter List"/>
+        <activity android:name=".NoAdharActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="No Adhar List"/>
+        <activity android:name=".ViewSurveyManActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="All Surveyors"/>
+        <activity android:name=".HelpViewActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="All Help Requests"/>
+        <activity android:name=".HelpDetailsActivity"
+            android:label="Help Details"/>
+        <activity android:name=".SearchByBoothActivity"
+            android:theme="@style/NoBar"/>
+        <activity android:name=".LabharthiListActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="Labharthi List"/>
+        <activity android:name=".AddDocumentActivity"
+            android:label="All Documents"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>

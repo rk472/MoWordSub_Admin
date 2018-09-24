@@ -40,6 +40,7 @@ public class ViewSurveyManActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_survey_man);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         list=findViewById(R.id.survey_man_list);
         inst=this;
         id=getSharedPreferences("login",MODE_PRIVATE).getString("id","0");

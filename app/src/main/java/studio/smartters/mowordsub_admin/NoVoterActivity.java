@@ -37,6 +37,7 @@ public class NoVoterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_no_voter);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         etSearch = findViewById(R.id.search_name_text);
         list=findViewById(R.id.search_name_list);
         list.setHasFixedSize(true);

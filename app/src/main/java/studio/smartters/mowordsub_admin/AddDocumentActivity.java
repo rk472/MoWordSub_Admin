@@ -47,6 +47,7 @@ public class AddDocumentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_document);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         list=findViewById(R.id.document_list);
         ln=findViewById(R.id.document_error);
         fab=findViewById(R.id.add_document);

@@ -35,6 +35,7 @@ public class HelpViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_view);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         inst=this;
         list=findViewById(R.id.help_search_name_list);
         list.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));

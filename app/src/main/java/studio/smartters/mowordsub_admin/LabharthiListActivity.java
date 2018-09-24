@@ -41,6 +41,7 @@ public class LabharthiListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_labharthi_list);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         searchName=findViewById(R.id.search_scheme_name);
         schemeSelect=findViewById(R.id.scheme_select);
         list=findViewById(R.id.labharthi_list);
@@ -113,6 +114,11 @@ public class LabharthiListActivity extends AppCompatActivity {
         GetDataTask gt=new GetDataTask();
         gt.execute(Constants.URL+"getLabharthiBySubAdmin?id="+id+"&atal="+atal+"&ujwala="+ujwala+"&sukanya="+sukanya+"&surakhya="+surakhya+"&other="+other+"&name="+name);
     }
+
+    public void clearText(View view) {
+        searchName.setText("");
+    }
+
     private class GetDataTask extends AsyncTask<String,Void,String> {
 
         @Override
