@@ -48,7 +48,7 @@ public class AddAdharDialog extends Dialog {
                 }else{
                     activity.p=new ProgressDialog(c);
                     activity.p.setTitle("Please wait");
-                    activity.p.setMessage("please wait while we are adding the ward");
+                    activity.p.setMessage("Please wait while we are adding Adhar number");
                     activity.p.setCanceledOnTouchOutside(false);
                     activity.p.setCancelable(false);
                     activity.p.show();

@@ -45,11 +45,11 @@ public class AddVoterDialog extends Dialog {
                 String name=et_name.getText().toString().trim();
 
                 if(TextUtils.isEmpty(name)) {
-                    Toast.makeText(context, "Name can't be empty..", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Voter ID can't be empty..", Toast.LENGTH_SHORT).show();
                 }else{
                     fragment.p=new ProgressDialog(c);
                     fragment.p.setTitle("Please wait");
-                    fragment.p.setMessage("please wait while we are adding the ward");
+                    fragment.p.setMessage("Please wait while we are adding Voter ID");
                     fragment.p.setCanceledOnTouchOutside(false);
                     fragment.p.setCancelable(false);
                     fragment.p.show();
@@ -90,7 +90,7 @@ public class AddVoterDialog extends Dialog {
                 Log.e("err",s);
                 JSONObject json=new JSONObject(s);
                 if(json.getBoolean("status")){
-                    Toast.makeText(c, "submitted Successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(c, "Submitted Successfully", Toast.LENGTH_SHORT).show();
                     fragment.refresh("");
                     dismiss();
                 }else{
