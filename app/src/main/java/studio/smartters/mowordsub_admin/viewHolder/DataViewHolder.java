@@ -11,13 +11,16 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import studio.smartters.mowordsub_admin.Dialog.AddAdharDialog;
+import studio.smartters.mowordsub_admin.Dialog.AddVoterDialog;
+import studio.smartters.mowordsub_admin.Dialog.CreateDialogBooth;
 import studio.smartters.mowordsub_admin.PersonDataActivity;
 import studio.smartters.mowordsub_admin.R;
 
 
 public class DataViewHolder extends RecyclerView.ViewHolder {
     private TextView nameText, hofText;
-    private ImageButton callButton;
+    private ImageButton callButton,editButton ;
     private View v;
 
     public DataViewHolder(View itemView) {
@@ -26,6 +29,7 @@ public class DataViewHolder extends RecyclerView.ViewHolder {
         nameText = v.findViewById(R.id.member_name);
         hofText = v.findViewById(R.id.member_hof);
         callButton = v.findViewById(R.id.member_call);
+        editButton = v.findViewById(R.id.member_edit);
     }
 
     public void setName(String name) {
@@ -34,6 +38,27 @@ public class DataViewHolder extends RecyclerView.ViewHolder {
 
     public void setHof(String name) {
         hofText.setText(name);
+    }
+
+    public void setEditAdhar(final AppCompatActivity main){
+        editButton.setVisibility(View.VISIBLE);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AddAdharDialog dialog= new AddAdharDialog(main);
+                dialog.show();
+            }
+        });
+    }
+    public void setEditVoter(final AppCompatActivity main){
+        editButton.setVisibility(View.VISIBLE);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AddVoterDialog dialog= new AddVoterDialog(main);
+                dialog.show();
+            }
+        });
     }
 
     public void setCall(final String number, final AppCompatActivity a) {
