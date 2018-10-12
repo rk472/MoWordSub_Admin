@@ -32,9 +32,9 @@ public class AddAdharDialog extends Dialog {
     private Button btn_create;
     private NoAdharActivity activity =NoAdharActivity.getInstance();
     private Context c;
-    public AddAdharDialog(@NonNull final Context context) {
+    public AddAdharDialog(@NonNull final Context context, final String id) {
         super(context);
-        setContentView(R.layout.modal_create);
+        setContentView(R.layout.modal_adhar);
         et_name = findViewById(R.id.modal_create);
         btn_create = findViewById(R.id.modal_btn);
         c=context;
@@ -44,7 +44,7 @@ public class AddAdharDialog extends Dialog {
                 String name=et_name.getText().toString().trim();
 
                 if(TextUtils.isEmpty(name)) {
-                    Toast.makeText(context, "Name can't be empty..", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Adhar number can't be empty..", Toast.LENGTH_SHORT).show();
                 }else{
                     activity.p=new ProgressDialog(c);
                     activity.p.setTitle("Please wait");
@@ -53,7 +53,7 @@ public class AddAdharDialog extends Dialog {
                     activity.p.setCancelable(false);
                     activity.p.show();
                     AddBoothTask at=new AddBoothTask();
-                    at.execute(Constants.URL+"addBooth?booth="+name+"&ward=");
+                    at.execute(Constants.URL+"editNoAdhar?adhar="+name+"&id="+id);
 
                 }
             }
@@ -75,12 +75,9 @@ public class AddAdharDialog extends Dialog {
                     data=ir.read();
                 }
                 return res;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
             } catch (IOException e) {
-                e.printStackTrace();
+                return e.getMessage();
             }
-            return null;
         }
 
         @Override
@@ -98,7 +95,7 @@ public class AddAdharDialog extends Dialog {
                     Toast.makeText(c, "Some error occurred...try again later..", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
-                e.printStackTrace();
+                Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
             }
         }
     }

@@ -42,6 +42,7 @@ public class NoVoterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_no_voter);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         etSearch = findViewById(R.id.search_name_text);
+        inst=this;
         list=findViewById(R.id.search_name_list);
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
@@ -84,18 +85,16 @@ public class NoVoterActivity extends AppCompatActivity {
                 InputStream is=con.getInputStream();
                 InputStreamReader ir=new InputStreamReader(is);
                 int data=ir.read();
-                String res="";
+                StringBuilder res= new StringBuilder();
                 while(data!=-1){
-                    res+=(char)data;
+                    res.append((char) data);
                     data=ir.read();
                 }
-                return res;
-            } catch (MalformedURLException e) {
-                //Toast.makeText(NoVoterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                return res.toString();
             } catch (IOException e) {
-                //Toast.makeText(NoVoterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                return e.getMessage();
             }
-            return "";
+
         }
 
         @Override
@@ -112,11 +111,11 @@ public class NoVoterActivity extends AppCompatActivity {
                     Log.e("arr", arr.getJSONObject(i).toString());
                 }
 
-                DataAdapter d = new DataAdapter(jsonList, NoVoterActivity.this);
+                DataAdapter d = new DataAdapter(jsonList, NoVoterActivity.this,'v');
                 list.setAdapter(d);
 
             } catch(JSONException e){
-                Toast.makeText(NoVoterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(NoVoterActivity.this, s, Toast.LENGTH_SHORT).show();
             }
 
         }

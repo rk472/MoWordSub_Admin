@@ -92,12 +92,10 @@ public class NoAdharActivity extends AppCompatActivity {
                     data=ir.read();
                 }
                 return res;
-            } catch (MalformedURLException e) {
-                //Toast.makeText(NoAdharActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
-                //Toast.makeText(NoAdharActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                return "Unable to Reach server !";
             }
-            return "";
+
         }
 
         @Override
@@ -114,11 +112,11 @@ public class NoAdharActivity extends AppCompatActivity {
                     Log.e("arr", arr.getJSONObject(i).toString());
                 }
 
-                DataAdapter d = new DataAdapter(jsonList, NoAdharActivity.this);
+                DataAdapter d = new DataAdapter(jsonList, NoAdharActivity.this,'a');
                 list.setAdapter(d);
 
             } catch(JSONException e){
-                Toast.makeText(NoAdharActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(NoAdharActivity.this, s, Toast.LENGTH_SHORT).show();
             }
 
         }

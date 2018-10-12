@@ -17,11 +17,17 @@ import studio.smartters.mowordsub_admin.viewHolder.DataViewHolder;
 
 
 public class DataAdapter extends RecyclerView.Adapter<DataViewHolder> {
-    List<JSONObject> arr;
-    AppCompatActivity a;
+    private List<JSONObject> arr;
+    private AppCompatActivity a;
+    private char c='n';
     public DataAdapter(List<JSONObject> arr, AppCompatActivity a){
         this.arr=arr;
         this.a=a;
+    }
+    public DataAdapter(List<JSONObject> arr, AppCompatActivity a,char c){
+        this.arr=arr;
+        this.a=a;
+        this.c=c;
     }
     @NonNull
     @Override
@@ -37,6 +43,10 @@ public class DataAdapter extends RecyclerView.Adapter<DataViewHolder> {
             holder.setName(arr.get(position).getString("pname"));
             holder.setCall(arr.get(position).getString("pcontact"),a);
             holder.setClick(arr.get(position).toString(),a);
+            if(c=='a')
+                holder.setEditAdhar(a,arr.get(position).getString("id"));
+            else if(c=='v')
+                holder.setEditVoter(a,arr.get(position).getString("id"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

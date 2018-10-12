@@ -32,9 +32,10 @@ public class AddVoterDialog extends Dialog {
     private Button btn_create;
     private NoVoterActivity fragment=NoVoterActivity.getInstance();
     private Context c;
-    public AddVoterDialog(@NonNull final Context context) {
+    public AddVoterDialog(@NonNull final Context context, final String id) {
         super(context);
-        setContentView(R.layout.modal_create);
+        setContentView(R.layout.modal_voter);
+        //Toast.makeText(context, id+"", Toast.LENGTH_SHORT).show();
         et_name = findViewById(R.id.modal_create);
         btn_create = findViewById(R.id.modal_btn);
         c=context;
@@ -53,7 +54,7 @@ public class AddVoterDialog extends Dialog {
                     fragment.p.setCancelable(false);
                     fragment.p.show();
                     AddBoothTask at=new AddBoothTask();
-                    at.execute(Constants.URL+"addBooth?booth="+name+"&ward=");
+                    at.execute(Constants.URL+"editNoVoter?id="+id+"&voter="+name);
 
                 }
             }
@@ -69,18 +70,16 @@ public class AddVoterDialog extends Dialog {
                 InputStream is=con.getInputStream();
                 InputStreamReader ir=new InputStreamReader(is);
                 int data=ir.read();
-                String res="";
+                StringBuilder res= new StringBuilder();
                 while(data!=-1){
-                    res+=(char)data;
+                    res.append((char) data);
                     data=ir.read();
                 }
-                return res;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
+                return res.toString();
             } catch (IOException e) {
-                e.printStackTrace();
+                return e.getMessage();
             }
-            return null;
+
         }
 
         @Override
@@ -91,14 +90,14 @@ public class AddVoterDialog extends Dialog {
                 Log.e("err",s);
                 JSONObject json=new JSONObject(s);
                 if(json.getBoolean("status")){
-                    Toast.makeText(c, "Added Successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(c, "submitted Successfully", Toast.LENGTH_SHORT).show();
                     fragment.refresh("");
                     dismiss();
                 }else{
                     Toast.makeText(c, "Some error occurred...try again later..", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
-                e.printStackTrace();
+                Toast.makeText(fragment, s, Toast.LENGTH_SHORT).show();
             }
         }
     }

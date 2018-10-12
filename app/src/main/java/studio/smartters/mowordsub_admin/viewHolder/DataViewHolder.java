@@ -40,22 +40,22 @@ public class DataViewHolder extends RecyclerView.ViewHolder {
         hofText.setText(name);
     }
 
-    public void setEditAdhar(final AppCompatActivity main){
+    public void setEditAdhar(final AppCompatActivity main,final String id){
         editButton.setVisibility(View.VISIBLE);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final AddAdharDialog dialog= new AddAdharDialog(main);
+                final AddAdharDialog dialog= new AddAdharDialog(main,id);
                 dialog.show();
             }
         });
     }
-    public void setEditVoter(final AppCompatActivity main){
+    public void setEditVoter(final AppCompatActivity main, final String id){
         editButton.setVisibility(View.VISIBLE);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final AddVoterDialog dialog= new AddVoterDialog(main);
+                final AddVoterDialog dialog= new AddVoterDialog(main,id);
                 dialog.show();
             }
         });
