@@ -23,13 +23,14 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import studio.smartters.mowordsub_admin.Fragment.ViewBoothFragment;
+import studio.smartters.mowordsub_admin.NoAdharActivity;
 import studio.smartters.mowordsub_admin.R;
 import studio.smartters.mowordsub_admin.others.Constants;
 
 public class AddAdharDialog extends Dialog {
     private EditText et_name;
     private Button btn_create;
-    private ViewBoothFragment fragment=ViewBoothFragment.getInstance();
+    private NoAdharActivity activity =NoAdharActivity.getInstance();
     private Context c;
     public AddAdharDialog(@NonNull final Context context) {
         super(context);
@@ -45,14 +46,14 @@ public class AddAdharDialog extends Dialog {
                 if(TextUtils.isEmpty(name)) {
                     Toast.makeText(context, "Name can't be empty..", Toast.LENGTH_SHORT).show();
                 }else{
-                    fragment.p=new ProgressDialog(c);
-                    fragment.p.setTitle("Please wait");
-                    fragment.p.setMessage("please wait while we are adding the ward");
-                    fragment.p.setCanceledOnTouchOutside(false);
-                    fragment.p.setCancelable(false);
-                    fragment.p.show();
+                    activity.p=new ProgressDialog(c);
+                    activity.p.setTitle("Please wait");
+                    activity.p.setMessage("please wait while we are adding the ward");
+                    activity.p.setCanceledOnTouchOutside(false);
+                    activity.p.setCancelable(false);
+                    activity.p.show();
                     AddBoothTask at=new AddBoothTask();
-                    at.execute(Constants.URL+"addBooth?booth="+name+"&ward="+fragment.getWardId());
+                    at.execute(Constants.URL+"addBooth?booth="+name+"&ward=");
 
                 }
             }
@@ -85,13 +86,13 @@ public class AddAdharDialog extends Dialog {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            fragment.p.dismiss();
+            activity.p.dismiss();
             try {
                 Log.e("err",s);
                 JSONObject json=new JSONObject(s);
                 if(json.getBoolean("status")){
                     Toast.makeText(c, "Added Successfully", Toast.LENGTH_SHORT).show();
-                    fragment.refreshBooth();
+                    activity.refresh("");
                     dismiss();
                 }else{
                     Toast.makeText(c, "Some error occurred...try again later..", Toast.LENGTH_SHORT).show();

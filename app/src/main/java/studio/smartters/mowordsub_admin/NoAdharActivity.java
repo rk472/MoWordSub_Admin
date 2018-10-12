@@ -1,5 +1,6 @@
 package studio.smartters.mowordsub_admin;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -26,18 +27,22 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import studio.smartters.mowordsub_admin.Fragment.ViewBoothFragment;
 import studio.smartters.mowordsub_admin.adapter.DataAdapter;
 import studio.smartters.mowordsub_admin.others.Constants;
 
 public class NoAdharActivity extends AppCompatActivity {
     private EditText etSearch;
     private String id;
+    public ProgressDialog p;
+    private static NoAdharActivity inst;
     private RecyclerView list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_no_adhar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        inst = this;
         etSearch = findViewById(R.id.search_name_text);
         list=findViewById(R.id.search_name_list);
         list.setHasFixedSize(true);
@@ -57,7 +62,10 @@ public class NoAdharActivity extends AppCompatActivity {
             }
         });
     }
-    void refresh(String name){
+    public static NoAdharActivity getInstance(){
+        return  inst;
+    }
+    public void refresh(String name){
         GetDataTask gt=new GetDataTask();
         gt.execute(Constants.URL+"getNoAdharBySubAdmin?id="+id+"&name="+name);
     }

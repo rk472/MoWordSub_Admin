@@ -23,13 +23,14 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import studio.smartters.mowordsub_admin.Fragment.ViewBoothFragment;
+import studio.smartters.mowordsub_admin.NoVoterActivity;
 import studio.smartters.mowordsub_admin.R;
 import studio.smartters.mowordsub_admin.others.Constants;
 
 public class AddVoterDialog extends Dialog {
     private EditText et_name;
     private Button btn_create;
-    private ViewBoothFragment fragment=ViewBoothFragment.getInstance();
+    private NoVoterActivity fragment=NoVoterActivity.getInstance();
     private Context c;
     public AddVoterDialog(@NonNull final Context context) {
         super(context);
@@ -52,7 +53,7 @@ public class AddVoterDialog extends Dialog {
                     fragment.p.setCancelable(false);
                     fragment.p.show();
                     AddBoothTask at=new AddBoothTask();
-                    at.execute(Constants.URL+"addBooth?booth="+name+"&ward="+fragment.getWardId());
+                    at.execute(Constants.URL+"addBooth?booth="+name+"&ward=");
 
                 }
             }
@@ -91,7 +92,7 @@ public class AddVoterDialog extends Dialog {
                 JSONObject json=new JSONObject(s);
                 if(json.getBoolean("status")){
                     Toast.makeText(c, "Added Successfully", Toast.LENGTH_SHORT).show();
-                    fragment.refreshBooth();
+                    fragment.refresh("");
                     dismiss();
                 }else{
                     Toast.makeText(c, "Some error occurred...try again later..", Toast.LENGTH_SHORT).show();

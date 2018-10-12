@@ -1,5 +1,6 @@
 package studio.smartters.mowordsub_admin;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,8 @@ public class NoVoterActivity extends AppCompatActivity {
     private EditText etSearch;
     private String id;
     private RecyclerView list;
+    public ProgressDialog p;
+    private static NoVoterActivity inst;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +60,10 @@ public class NoVoterActivity extends AppCompatActivity {
             }
         });
     }
-    void refresh(String name){
+    public static NoVoterActivity getInstance(){
+        return  inst;
+    }
+    public void refresh(String name){
         GetDataTask gt=new GetDataTask();
         gt.execute(Constants.URL+"getNoVoterBySubAdmin?id="+id+"&name="+name);
     }
